@@ -3,6 +3,7 @@ package com.example.StockBrokingPlatform.controller;
 import com.example.StockBrokingPlatform.DTO.ClientDTO;
 import com.example.StockBrokingPlatform.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,4 +50,17 @@ public class ClientController {
         clientService.deleteClient(id);
         return ResponseEntity.noContent().build();
     }
+
+    // Search by name or client code
+    @GetMapping("/search")
+    @Query("""
+    SELECT i FROM Client i
+    WHERE (:name IS NULL OR LOWER(i.name) LIKE LOWER(CONCAT('%', :name, '%')))
+    AND (:clientCode IS NULL OR LOWER(i.clientCode) LIKE LOWER(CONCAT('%', :clientCode, '%')))
+    """)
+    public ResponseEntity<List<ClientDTO>> searchClients(@RequestParam(required = false) String name, @RequestParam(required = false) String clientCode) {
+        return ResponseEntity.ok(clientService.searchClients(name, clientCode));
+    }
+
+
 }
