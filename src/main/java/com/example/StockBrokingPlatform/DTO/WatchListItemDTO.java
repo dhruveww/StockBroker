@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 public class WatchListItemDTO {
     private Long id;
     private Long watchListId;
+    private Long instrumentId;
+    private LocalDateTime addedDate;
 
     public Long getId() {
         return id;
@@ -37,7 +39,4 @@ public class WatchListItemDTO {
     public void setAddedDate(LocalDateTime addedDate) {
         this.addedDate = addedDate;
     }
-
-    private Long instrumentId;
-    private LocalDateTime addedDate;
 }
