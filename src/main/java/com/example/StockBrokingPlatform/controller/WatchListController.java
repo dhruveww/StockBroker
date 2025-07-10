@@ -16,20 +16,30 @@ public class WatchListController {
     @Autowired
     private WatchListService watchListService;
 
+    //Get client's watch lists
     @GetMapping("/client/{clientId}")
     public List<WatchListDTO> getClientWatchlists(@PathVariable Long clientId) {
         return watchListService.getWatchListsByClientId(clientId);
     }
 
+    //watchlists with instruments
+    @GetMapping("/{id}/with-items")
+    public WatchListDTO getWatchListWithItems(@PathVariable Long id) {
+        return watchListService.getWatchListWithItems(id);
+    }
+
+    //Fetch WatchList
     @GetMapping("/{id}")
     public WatchListDTO getWatchListById(@PathVariable Long id) {
         return watchListService.getWatchListById(id);
     }
 
+    //Add new
     @PostMapping
     public WatchListDTO createWatchList(@RequestBody WatchListDTO dto) {
         return watchListService.createWatchList(dto);
     }
+
 
     @PutMapping("/{id}")
     public WatchListDTO updateWatchList(@PathVariable Long id, @RequestBody WatchListDTO dto) {
