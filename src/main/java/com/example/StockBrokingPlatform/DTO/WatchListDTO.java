@@ -8,6 +8,7 @@ public class WatchListDTO {
     private String name;
     private boolean isDefault;
     private LocalDateTime createdDate;
+    private List<WatchListItemDTO> items;
 
     public Long getId() {
         return id;
@@ -47,5 +48,13 @@ public class WatchListDTO {
 
     public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public List<WatchListItemDTO> getItems() {
+        return items;
+    }
+
+    public void setItems(List<WatchListItemDTO> items) {
+        this.items = items;
     }
 }
