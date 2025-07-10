@@ -53,11 +53,6 @@ public class ClientController {
 
     // Search by name or client code
     @GetMapping("/search")
-    @Query("""
-    SELECT i FROM Client i
-    WHERE (:name IS NULL OR LOWER(i.name) LIKE LOWER(CONCAT('%', :name, '%')))
-    AND (:clientCode IS NULL OR LOWER(i.clientCode) LIKE LOWER(CONCAT('%', :clientCode, '%')))
-    """)
     public ResponseEntity<List<ClientDTO>> searchClients(@RequestParam(required = false) String name, @RequestParam(required = false) String clientCode) {
         return ResponseEntity.ok(clientService.searchClients(name, clientCode));
     }
