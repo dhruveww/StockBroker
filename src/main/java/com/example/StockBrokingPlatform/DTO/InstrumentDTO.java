@@ -6,6 +6,8 @@ public class InstrumentDTO {
     private String companyName;
     private String exchange;
     private String exchangeType;
+    private Double currentPrice;
+    private Integer lotSize;
 
     public String getSymbol() {
         return symbol;
@@ -62,7 +64,4 @@ public class InstrumentDTO {
     public void setLotSize(Integer lotSize) {
         this.lotSize = lotSize;
     }
-
-    private Double currentPrice;
-    private Integer lotSize;
 }
