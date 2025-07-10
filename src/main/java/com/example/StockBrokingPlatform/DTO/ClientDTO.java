@@ -8,6 +8,8 @@ public class ClientDTO {
     private String email;
     private String phone;
     private String pan;
+    private String kycStatus;
+    private String status;
 
     public Long getId() {
         return id;
@@ -72,7 +74,4 @@ public class ClientDTO {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    private String kycStatus;
-    private String status;
 }
