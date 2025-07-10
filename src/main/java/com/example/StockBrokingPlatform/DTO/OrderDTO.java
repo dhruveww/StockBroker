@@ -9,6 +9,9 @@ public class OrderDTO {
     private String orderType;
     private Integer quantity;
     private Double price;
+    private String status;
+    private LocalDateTime orderDate;
+    private String validity;
 
     public Long getId() {
         return id;
@@ -81,8 +84,4 @@ public class OrderDTO {
     public void setValidity(String validity) {
         this.validity = validity;
     }
-
-    private String status;
-    private LocalDateTime orderDate;
-    private String validity;
 }
